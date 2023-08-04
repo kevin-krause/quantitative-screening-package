@@ -43,8 +43,8 @@ class Model:
         # # Add Bollinger Band low indicator
         # df['bb_bbli'] = indicator_bb.bollinger_lband_indicator()
 
-        # # Add Width Size Bollinger Bands
-        # df['bb_bbw'] = indicator_bb.bollinger_wband()
+        # Add Width Size Bollinger Bands
+        df['bb_bbw'] = indicator_bb.bollinger_wband()
 
         # # Add Percentage Bollinger Bands
         # df['bb_bbp'] = indicator_bb.bollinger_pband()
@@ -55,18 +55,18 @@ class Model:
         df = dropna(self.distortions())
         
         plt.figure(figsize=(12, 6))
-        plt.plot(df['date'], df['close'], label='Stock Price')
-        plt.plot(df['date'], df['bb_bbm'], label='Bollinger Middle Band', linestyle='dashed')
-        plt.plot(df['date'], df['bb_bbh'], label='Bollinger High Band', linestyle='dotted')
-        plt.plot(df['date'], df['bb_bbl'], label='Bollinger Low Band', linestyle='dotted')
+        plt.plot(df.index, df['close'], label='Stock Price')
+        plt.plot(df.index, df['bb_bbm'], label='Bollinger Middle Band', linestyle='dashed')
+        plt.plot(df.index, df['bb_bbh'], label='Bollinger High Band', linestyle='dotted')
+        plt.plot(df.index, df['bb_bbl'], label='Bollinger Low Band', linestyle='dotted')
         
-        # # Entry points: When the price crosses below the lower band and the width is expanding
-        # entry_points = df[(df['close'] < df['bb_bbl']) & (df['bb_bbw'] > df['bb_bbw'].shift(1))]
-        # plt.scatter(entry_points.index, entry_points['close'], color='green', label='Entry Points', marker='^')
+        # Entry points: When the price crosses below the lower band and the width is expanding
+        entry_points = df[(df['close'] < df['bb_bbl']) & (df['bb_bbw'] > df['bb_bbw'].shift(1))]
+        plt.scatter(entry_points.index, entry_points['close'], color='green', label='Entry Points', marker='^')
 
-        # # Exit points: When the price crosses above the middle band
-        # exit_points = df[df['close'] > df['bb_bbm']]
-        # plt.scatter(exit_points.index, exit_points['close'], color='red', label='Exit Points', marker='v')
+        # Exit points: When the price crosses above the middle band
+        exit_points = df[df['close'] > df['bb_bbm']]
+        plt.scatter(exit_points.index, exit_points['close'], color='red', label='Exit Points', marker='v')
 
         plt.title('Stock Price with Bollinger Bands')
         plt.xlabel('date')
