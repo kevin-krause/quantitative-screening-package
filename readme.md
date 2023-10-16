@@ -9,7 +9,7 @@ This repository contains a finance model for quantitative trading. The model uti
 To get started with this finance model, follow these steps:
 
 1. **Clone the Repository:**
- ```bash
+```bash
 git clone https://github.com/kevin-krause/quantitative-trading-model.git
 ```
 
