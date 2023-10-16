@@ -10,12 +10,12 @@ To get started with this finance model, follow these steps:
 
 1. **Clone the Repository:**
  ```bash
-  git clone https://github.com/kevin-krause/quantitative-trading-model.git
+git clone https://github.com/kevin-krause/quantitative-trading-model.git
 ```
 
 2. **Install Dependencies:**
 ```bash
-    pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 3. **Running the Model:**
@@ -32,7 +32,7 @@ Before running the model, you can customize it by modifying the Python script (`
 
 1. Execute the Python script:
 ```bash
-    python main.py
+python main.py
 ```
 
 2. The model will analyze your trading strategies, calculate final balances, and generate insights.
